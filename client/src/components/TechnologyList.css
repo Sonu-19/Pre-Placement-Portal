@@ -1,0 +1,396 @@
+/* ===============================
+   FINAL HEADER CENTERING OVERRIDE
+   =============================== */
+
+/* Force header into vertical centered layout */
+.technology-list-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure title + subtitle stay centered */
+.technology-list-header h2,
+.technology-list-header p {
+  text-align: center !important;
+}
+
+/* 🔥 Kill right-side positioning of Add Technology */
+.technology-list-header .add-tech-btn {
+  position: static !important;
+  right: auto !important;
+  top: auto !important;
+  transform: none !important;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🔥 Kill float if it exists anywhere */
+.add-tech-btn {
+  float: none !important;
+}
+
+/* Mobile safety: keep everything centered */
+@media (max-width: 520px) {
+  .technology-list-header {
+    align-items: center !important;
+    text-align: center !important;
+  }
+}
+
+
+/* ===== Technology List Header ===== */
+.technology-list-header {
+  display: flex;                /* already exists → keep */
+  flex-direction: column;       /* stack items vertically */
+  align-items: center;          /* center horizontally */
+  justify-content: center;      /* center vertically */
+  text-align: center;
+  width: 100%;
+  position: relative;           /* important for button positioning */
+}
+
+/* Title */
+.technology-list-header h2 {
+  margin: 0;
+}
+
+/* Subtitle */
+.technology-list-header p {
+  margin: 6px 0 8px 0;
+}
+
+/* ===== Add Technology Button ===== */
+.add-tech-btn {
+  position: static;             /* 🔥 REMOVE right-side forcing */
+  margin-top: 8px;
+  display: inline-flex;         /* keep icon + text aligned */
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Optional: if old CSS had float */
+.add-tech-btn {
+  float: none;                  /* 🔥 kill float:right */
+}
+
+/* Optional safety: if parent had space-between */
+.technology-list-header {
+  justify-content: center !important;
+}
+
+
+.technology-list {
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+.technology-list-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.technology-list-header h2 {
+  margin: 0 0 6px 0;
+  font-size: 26px;
+  color: #1f2d6b;
+}
+
+.technology-list-header p {
+  margin: 0;
+  color: #5b6270;
+  font-size: 14px;
+}
+
+.add-tech-btn {
+  background: linear-gradient(180deg,#5b5ff9,#3c33d8);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-tech-btn i { font-size: 14px; }
+
+/* Position add button at right while allowing header text to be centered */
+.technology-list-header .add-tech-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Center the grid and make cards responsive */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
+  justify-content: center; /* center the columns when fewer items */
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto; /* center the whole grid container */
+  padding-bottom: 32px;
+}
+
+.tech-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(22,28,77,0.06);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 240px;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.tech-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #eaf0ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #2b5fe6;
+  font-size: 20px;
+}
+
+.tech-card h3 {
+  margin: 6px 0 0 0;
+  font-size: 18px;
+  color: #3b1c8a;
+}
+
+.tech-card p {
+  margin: 0;
+  color: #6b6f76;
+  font-size: 13px;
+  flex: 1; /* push button to bottom */
+}
+
+.select-tech-btn {
+  background: #4b6ef6;
+  color: #fff;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(75,110,246,0.12);
+  margin-top: auto;
+  width: 100%;
+}
+
+@media (max-width: 520px) {
+  .technology-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(1, minmax(240px, 1fr));
+  }
+  
+  .tech-card { min-height: 220px; padding: 16px; }
+  .tech-admin-actions { top: 8px; right: 8px; }
+
+  /* revert absolutely positioned header children on small screens */
+  .technology-list-header > div { position: static; transform: none; text-align: left; }
+  .technology-list-header .add-tech-btn { position: static; transform: none; }
+}
+
+/* subtle hover effect for cards */
+.tech-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(22,28,77,0.12); }
+
+/* Wizard overlay modal */
+.tw-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11,15,36,0.48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1200;
+}
+
+.tw-modal {
+  width: 100%;
+  max-width: 980px;
+  background: transparent; /* inner component provides card background */
+  border-radius: 12px;
+}
+
+/* When wizard is open: center only the header and hide the rest */
+.technology-list.wizard-open {
+  display: flex;
+  align-items: center;            /* vertical centering */
+  justify-content: flex-start;   /* keep content left-aligned horizontally */
+  min-height: calc(100vh - 84px); /* leave room for top app header */
+  padding-left: 48px;            /* slight left offset so it looks centered vertically but not flush */
+}
+
+.technology-list.wizard-open .technology-list-header {
+  margin: 0;
+  width: 100%;
+  max-width: 900px;
+  text-align: left;
+}
+
+/* hide grid and other controls while adding */
+.technology-list.wizard-open .tech-grid,
+.technology-list.wizard-open .add-tech-btn,
+.technology-list.wizard-open .technology-detail,
+.technology-list.wizard-open .neutral-placeholder {
+  display: none !important;
+}
+
+/* center the small subtitle under heading */
+.technology-list.wizard-open .technology-list-header h2 {
+  text-align: left;
+}
+
+/* If you prefer truly centered heading text, uncomment below */
+/*
+.technology-list.wizard-open .technology-list-header h2,
+.technology-list.wizard-open .technology-list-header p {
+  text-align: center;
+
+}
+*/
+.technology-list.wizard-open .technology-list-header h2,
+.technology-list.wizard-open .technology-list-header p {
+  visibility: hidden;
+}
+/* Detail / Roadmap view styles */
+.technology-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px 40px;
+}
+
+.back-btn {
+  background: transparent;
+  border: 0;
+  color: #3c33d8;
+  font-weight: 600;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tech-header h2 {
+  margin: 0 0 6px 0;
+  font-size: 28px;
+  color: #1f2d6b;
+}
+
+.tech-header p {
+  margin: 0 0 18px 0;
+  color: #62676f;
+}
+
+.roadmap-section h2 {
+  font-size: 20px;
+  color: #20306b;
+  margin-bottom: 6px;
+}
+
+.roadmap-subtitle {
+  margin: 0 0 12px 0;
+  color: #5b6270;
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.roadmap-card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(22,28,77,0.05);
+}
+
+.roadmap-card h3 { margin: 0 0 6px 0; font-size: 16px; color: #2b3a8c; }
+.roadmap-description { color: #6b6f76; font-size: 13px; margin: 0 0 8px 0; }
+.roadmap-steps { padding-left: 18px; margin: 0; color: #555; font-size: 13px; }
+
+.no-roadmap { text-align: left; color: #5b6270; padding: 12px 0; }
+
+.resources-grid {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.resource-card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(22,28,77,0.04);
+  min-width: 260px;
+  flex: 1 1 320px;
+}
+
+.resource-card h3 { margin: 0 0 8px 0; font-size: 15px; color: #20306b; }
+.video-list { display: flex; flex-direction: column; gap: 10px; }
+.video-item .video-placeholder { display:flex; gap:10px; align-items:center; color:#4b6ef6; }
+
+.tech-card { position: relative; }
+.tech-admin-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 6;
+}
+.delete-tech-btn {
+  background: #ff5c6c;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(255,92,108,0.12);
+}
+.delete-tech-btn:hover { transform: translateY(-2px) scale(1.02); }
+
+/* Neutral placeholder consistency */
+.technology-list .neutral-placeholder {
+  display:flex; align-items:center; justify-content:center; min-height:220px; color: #666;
+}
